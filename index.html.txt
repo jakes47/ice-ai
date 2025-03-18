@@ -19,6 +19,7 @@
         .container {
             max-width: 800px;
             margin: auto;
+            padding: 10px;
         }
         .code-box {
             background: #1e1e1e;
@@ -27,6 +28,7 @@
             text-align: left;
             overflow-x: auto;
             font-family: monospace;
+            margin-top: 20px;
         }
         .live-status {
             margin-top: 20px;
@@ -41,6 +43,19 @@
             background-color: red;
             border-radius: 50%;
             display: inline-block;
+        }
+        /* Ensure responsiveness */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .logo {
+                max-width: 120px;
+            }
+            .container {
+                width: 100%;
+                padding: 5px;
+            }
         }
     </style>
 </head>
@@ -68,12 +83,31 @@
     </div>
 
     <script>
-        // Simulating bot status update
-        setTimeout(() => {
-            document.getElementById("botStatus").style.backgroundColor = "green";
-            document.getElementById("statusText").textContent = "Online";
-        }, 3000);
+        // Simulating bot status update (this should be replaced with actual logic to check the bot status)
+        async function checkBotStatus() {
+            try {
+                let response = await fetch('https://api.solana.com/status');  // Replace with actual status API
+                let data = await response.json();
+                if (data.status === "online") {
+                    document.getElementById("botStatus").style.backgroundColor = "green";
+                    document.getElementById("statusText").textContent = "Online";
+                } else {
+                    document.getElementById("botStatus").style.backgroundColor = "red";
+                    document.getElementById("statusText").textContent = "Offline";
+                }
+            } catch (error) {
+                document.getElementById("botStatus").style.backgroundColor = "red";
+                document.getElementById("statusText").textContent = "Error connecting";
+            }
+        }
+        
+        // Check bot status after page load
+        window.onload = checkBotStatus;
     </script>
 </body>
 </html>
+
+      
+        
+
 
