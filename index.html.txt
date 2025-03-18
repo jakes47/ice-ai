@@ -1,13 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Website</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Liquidity Bot</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .logo {
+            max-width: 150px;
+            margin-top: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .code-box {
+            background: #1e1e1e;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: left;
+            overflow-x: auto;
+            font-family: monospace;
+        }
+        .live-status {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            background: #222;
+            display: inline-block;
+        }
+        .status-dot {
+            height: 10px;
+            width: 10px;
+            background-color: red;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
 </head>
 <body>
-  <h1>Welcome to My Website!</h1>
-  <p>This is a simple page hosted on GitHub Pages.</p>
+    <div class="container">
+        <img src="logo.png" alt="Coin Logo" class="logo">
+        <h1>AI-Powered Liquidity Bot</h1>
+        <p>Optimized for Solana & real-time trading strategies.</p>
+
+        <h2>Live Bot Status</h2>
+        <div class="live-status">
+            <span class="status-dot" id="botStatus"></span> <span id="statusText">Offline</span>
+        </div>
+
+        <h2>Sample Code Snippet</h2>
+        <div class="code-box">
+            <code>
+                async function getLiquidity() {
+                    let response = await fetch('https://api.solana.com');
+                    let data = await response.json();
+                    console.log(data);
+                }
+            </code>
+        </div>
+    </div>
+
+    <script>
+        // Simulating bot status update
+        setTimeout(() => {
+            document.getElementById("botStatus").style.backgroundColor = "green";
+            document.getElementById("statusText").textContent = "Online";
+        }, 3000);
+    </script>
 </body>
 </html>
+
